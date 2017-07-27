@@ -12,7 +12,7 @@ function Point(c) {
     this.move = function() {
         this.velocity = createVector(mouseX, mouseY).sub(this.pos).normalize();
         this.pastPos = this.pos.copy();
-        this.pos.add(this.velocity.mult(5));
+        this.pos.add(this.velocity.mult(2));
     }
 
     this.follow = function(dot) {
@@ -24,5 +24,8 @@ function Point(c) {
         var direction = createVector(random(-1, 1), random(-1, 1));
         this.velocity = direction.normalize();
         this.pos.add(this.velocity.mult(random(2, 8)));
+        if (mouseIsPressed) {
+            this.move();
+        }
     }
 }

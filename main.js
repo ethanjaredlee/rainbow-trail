@@ -15,18 +15,17 @@ function draw() {
         dots.push(new Point(dots.length));
     }
 
-    if (!keyIsPressed) {
-        dots[0].move()
-        for (i = 1; i < dots.length; i++) {
-            dots[i].follow(dots[i-1]);
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].display();
-        }
-    } else {
+    if (keyIsPressed) {
         for (i = 0; i < dots.length; i++) {
             dots[i].explode();
-            dots[i].display();
         }
+    } else if (mouseIsPressed) {
+        for (i = 0; i < dots.length; i++) {
+            dots[i].move();
+        }
+    }
+
+    for (i = 0; i < dots.length; i++) {
+        dots[i].display();
     }
 }
