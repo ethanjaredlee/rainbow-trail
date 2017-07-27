@@ -15,12 +15,14 @@ function Point(c) {
         this.pos.add(this.velocity.mult(5));
     }
 
-    this.loop = function() {
-        // method for trail to make a loop
-    }
-
     this.follow = function(dot) {
         this.pastPos = this.pos.copy();
         this.pos = dot.pastPos.copy();
+    }
+
+    this.explode = function() {
+        var direction = createVector(random(-1, 1), random(-1, 1));
+        this.velocity = direction.normalize();
+        this.pos.add(this.velocity.mult(random(2, 8)));
     }
 }
